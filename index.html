@@ -2,7 +2,8 @@
 <html lang="pt-br">
 <head>
     <title>Form</title>
-    
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
     
 </head>
@@ -10,48 +11,130 @@
     <div class="container">
         <form id="form1">
             <h3>Cadastra-se</h3>
-            <input type="text" placeholder="Email" >
-            <input type="password" placeholder="Senha" >
-            <input type="password" placeholder="Confirmar senha" >
+            <div class="radio row">
+                <div class="col-md-6"><input type="radio"  checked name="salary_status" id="Hourly"  onclick="Hourly()"> &nbsp; Pessoa física&nbsp;</div>
+                <div class="col-md-6"><input type="radio" name="salary_status" id="Percentage"  onclick="Percentage()">&nbsp; Pessoa jurídica&nbsp;</div>
+            </div>
 
+            <div class="row">
+                <div class="col-md-5" id="hourly" style="display:block">
+                    <input type="text" placeholder="Cpf" >
+                </div>
+
+                <div class="col-md-5"  id="percentage" style="display:none">
+                    <input type="text" placeholder="Cnpj" >
+                </div>
+
+                <div class="col-md-7">
+                    <input type="text" placeholder="Email" >
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-md-8">
+                    <input type="text" placeholder="Nome Completo" >
+                </div>
+
+                <div class="col-md-4">
+                    <input type="text" placeholder="Celular" >
+                </div>
+                
+            </div>
+           
+            <div class="row">
+                <div class="col-md-5">
+                    <input type="date" placeholder="Data de Nascimento" style="color: #333;" >
+                </div>
+
+                <div class="col-md-7">
+                    <input type="text" placeholder="Senhha" >
+                </div>
+                
+            </div>
             <div class="btn-box">
                 <button type="button" id="next1">Proximo</button>
             </div>
         </form>
 
         <form id="form2">
-            <h3>Social Links</h3>
-            <input type="text" placeholder="Facebook" >
-            <input type="text" placeholder="Github" >
-            <input type="text" placeholder="Linkedin" >
+            <img src="" alt="">
+            <h3>Cadastra-se</h3>
+
+            <div class="row">
+        
+                <div class="col-md-5" >
+                    <input type="text" placeholder="Cep" >
+                </div>
+
+                
+                <div class="col-md-7">
+                    <input type="text" placeholder="Endeço" >
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-4">
+                    <input type="text" placeholder="Bairro" >
+                </div>
+
+                <div class="col-md-4">
+                    <input type="text" placeholder="Cidade" >
+                </div>
+
+                <div class="col-md-4">
+                    <input type="text" placeholder="Estado" >
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-5">
+                    <input type="text" placeholder="Numero" >
+                </div>
+
+                <div class="col-md-7">
+                    <input type="text" placeholder="Complemento" >
+                </div>
+            </div>
+
 
             <div class="btn-box">
                 <button type="button" id="back1">Voltar</button>
-                <button type="button" id="next2">Proximo</button>
+                <button type="button" id="next2">Enviar</button>
             </div>
         </form>
 
-        <form id="form3">
-            <h3>Personal Info</h3>
-            <input type="text" placeholder="First Name" >
-            <input type="text" placeholder="Last Name" >
-            <input type="text" placeholder="Mobile No." >
-
-            <div class="btn-box">
-                <button type="button" id="back2">Voltar</button>
-                <button type="submit" >Enviar</button>
-            </div>
-        </form>
-
-        <div class="step-row">
+        <div class="step-row ">
             <div id="progress"></div>
-            <div class="step-col"><small>Step 1</small></div>
-            <div class="step-col"><small>Step 2</small></div>
-            <div class="step-col"><small>Step 3</small></div>
+            <div class="step-col"><small>Dados Pessoais </small></div>
+            <div class="step-col"><small>Endereço</small></div>
         </div>
     </div>
 
 <script>
+
+    var text1 = document.getElementById("percentage");
+    var text = document.getElementById("hourly");
+    function Hourly() {
+        var checkBox = document.getElementById("Hourly");
+
+        if (checkBox.checked == true){
+            text.style.display = "block";
+            text1.style.display = "none";
+        }else{
+            text.style.display = "none";
+        }
+    }
+    function Percentage() {
+       var checkBox = document.getElementById("Percentage");
+
+       if (checkBox.checked == true){
+           text1.style.display = "block";
+           text.style.display = "none";
+       } else {
+          text.style.display = "none";
+       }
+    }
+
     var form1 = document.getElementById("form1");
     var form2 = document.getElementById("form2");
     var form3 = document.getElementById("form3");
@@ -65,29 +148,21 @@
 
 
     next1.onclick = function(){
-        form1.style.left = "-450px";
+        form1.style.left = "-670px";
         form2.style.left = "40px";
-        progress.style.width ="240px";
+        progress.style.width ="580px";
     } 
 
     back1.onclick = function(){
         form1.style.left = "40px";
-        form2.style.left = "450px";
+        form2.style.left = "670px";
         progress.style.width ="120px";
     }
 
-    next2.onclick = function(){
-        form2.style.left = "-450px";
-        form3.style.left = "40px";
-        progress.style.width ="360px";
-    }
-
-    back2.onclick = function(){
-        form2.style.left = "40px";
-        form3.style.left = "450px";
-        progress.style.width ="240px";
-    }
 
 </script>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
 </body>
 </html>
